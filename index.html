@@ -16,6 +16,17 @@ h1 { font-size:22px; margin:0 0 4px; }
 h2 { font-size:16px; margin:28px 0 8px; }
 .muted { color:var(--muted); font-size:13px; }
 a { color:inherit; }
+.tabs { display:flex; gap:6px; margin:20px 0 0; overflow-x:auto; border-bottom:1px solid var(--line); }
+.tab { appearance:none; border:1px solid transparent; border-bottom:0; background:none; color:var(--text2); cursor:pointer;
+       padding:8px 14px 10px; border-radius:10px 10px 0 0; text-align:left; font:inherit; white-space:nowrap; margin-bottom:-1px; }
+.tab .t { display:block; font-weight:700; font-size:16px; }
+.tab .s { display:block; font-size:12px; color:var(--muted); font-variant-numeric:tabular-nums; }
+.tab:hover { background:var(--grid); }
+.tab[aria-selected="true"] { background:var(--bg); border-color:var(--line); color:var(--text); }
+.tab.has-deal .s { color:var(--accent); font-weight:600; }
+.tab:focus-visible { outline:2px solid var(--accent); outline-offset:-2px; }
+.panel { display:none; }
+.panel.active { display:block; }
 .hero { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px; margin:20px 0; }
 .hero.deal { background:var(--accent-bg); border-color:var(--accent); }
 .hero .label { font-size:13px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
@@ -39,6 +50,7 @@ tr.dim td { color:var(--muted); }
 .legend { display:flex; gap:16px; font-size:13px; color:var(--text2); padding:0 4px 8px; flex-wrap:wrap; }
 .legend i { display:inline-block; width:12px; height:3px; border-radius:2px; vertical-align:middle; margin-right:6px; }
 .legend i.dash { background:none; border-top:2px dashed var(--muted); height:0; }
+.plot .empty { padding:24px 4px; color:var(--muted); font-size:13px; }
 svg text { font:12px system-ui,-apple-system,"Segoe UI",sans-serif; fill:var(--muted); }
 svg text.lbl { fill:var(--text2); font-weight:600; }
 .tip { position:absolute; pointer-events:none; background:var(--card); border:1px solid var(--line); border-radius:8px;
@@ -49,121 +61,289 @@ footer { margin-top:16px; }
 </style>
 </head>
 <body><main>
-<h1>Duotone Evo SLS 10m &mdash; new</h1>
-<div class="muted">Last checked Friday 25 September 2026, 23:54 &middot; 8 shops and second-hand sites</div>
-<div class='hero deal'><div class='label'>Deal found</div><div class='big'>&euro;1,165</div><div>2024 model listed new on <a href='https://www.kleinanzeigen.de/s-anzeige/duotone-evo-sls-10m-2024-neu/3474698195-230-8355'>Kleinanzeigen (DE)</a> &middot; delivered, estimated &middot; alert at &euro;1,850 or less</div></div>
+<h1>Duotone Evo SLS &mdash; new</h1>
+<div class="muted">Last checked Saturday 26 September 2026, 00:21 &middot; 8 shops and second-hand sites</div>
 
+<nav class="tabs" role="tablist" aria-label="Kite size">
+<button class='tab' role='tab' id='tab-7' data-tab='7' aria-controls='panel-7'><span class='t'>7m</span><span class='s'>&euro;1,919</span></button>
+<button class='tab' role='tab' id='tab-8' data-tab='8' aria-controls='panel-8'><span class='t'>8m</span><span class='s'>&euro;2,014</span></button>
+<button class='tab has-deal' role='tab' id='tab-9' data-tab='9' aria-controls='panel-9'><span class='t'>9m</span><span class='s'>&euro;1,366 &middot; deal</span></button>
+<button class='tab has-deal' role='tab' id='tab-10' data-tab='10' aria-controls='panel-10'><span class='t'>10m</span><span class='s'>&euro;1,165 &middot; deal</span></button>
+<button class='tab' role='tab' id='tab-11' data-tab='11' aria-controls='panel-11'><span class='t'>11m</span><span class='s'>&euro;2,239</span></button>
+<button class='tab' role='tab' id='tab-unknown' data-tab='unknown' aria-controls='panel-unknown'><span class='t'>Size not stated</span><span class='s'>5 listings</span></button>
+</nav>
+<section class="panel" id="panel-7" role="tabpanel" aria-labelledby="tab-7">
+<div class='hero '><div class='label'>No deal yet &middot; cheapest in stock</div><div class='big'>&euro;1,919</div><div>2026 model at <a href='https://www.kitemana.nl/duotone-kiteboarding/evo-sls-2026-kite-117405'>Kitemana (NL)</a> &middot; delivered, estimated &middot; alert at &euro;1,630 or less</div></div>
 <h2>Cheapest delivered price in stock, per day</h2>
-<div class="card chart"><div class="legend" id="legend"></div><div id="chart"></div><div class="tip" id="tip"></div></div>
-<h2>All offers</h2>
+<div class="card chart" data-size="7"><div class="legend"></div><div class="plot"></div><div class="tip"></div></div>
+<h2>Shops</h2>
+<div class="card wrap"><table>
+<thead><tr><th>Shop</th><th>Kite</th><th>Stock</th><th class="num">Shop price</th><th class="num">Delivered (est.)</th></tr></thead>
+<tbody>
+<tr><td>Kitemana (NL)</td><td><span class='year'>2026</span> <a href='https://www.kitemana.nl/duotone-kiteboarding/evo-sls-2026-kite-117405'>Evo SLS 2026 Kite 7m: C12 Green / Purple</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,919 EUR</td><td class='num'><b>&euro;1,919</b></td></tr>
+<tr><td>Kitemana (NL)</td><td><span class='year'>2026</span> <a href='https://www.kitemana.nl/duotone-kiteboarding/evo-sls-2026-kite-117405'>Evo SLS 2026 Kite 7m: C13 Dark-Grey / Turquoise</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,919 EUR</td><td class='num'><b>&euro;1,919</b></td></tr>
+<tr><td>Kiteshop.com (UK)</td><td><span class='year'>2026</span> <a href='https://kiteshop.com/products/duotone-evo-sls?variant=54951454572929'>Duotone EVO SLS 2026 - Grey / 7.0m</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,579 GBP</td><td class='num'><b>&euro;1,920</b></td></tr>
+<tr><td>Kiteshop.com (UK)</td><td><span class='year'>2026</span> <a href='https://kiteshop.com/products/duotone-evo-sls?variant=54951454802305'>Duotone EVO SLS 2026 - White / 7.0m</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,579 GBP</td><td class='num'><b>&euro;1,920</b></td></tr>
+<tr><td>Kiteshop.com (UK)</td><td><span class='year'>2026</span> <a href='https://kiteshop.com/products/duotone-evo-sls?variant=54951454343553'>Duotone EVO SLS 2026 - Green / 7.0m</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,579 GBP</td><td class='num'><b>&euro;1,920</b></td></tr>
+<tr><td>The Kitesurf Centre (UK)</td><td><span class='year'>2026</span> <a href='https://www.thekitesurfcentre.com/products/dtk-evo-sls-2026?variant=52802136473937'>Duotone Evo SLS - Dark Grey/Turquoise / 07.0</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,579 GBP</td><td class='num'><b>&euro;1,920</b></td></tr>
+<tr class='dim'><td>The Kitesurf Centre (UK)</td><td><span class='year'>2026</span> <a href='https://www.thekitesurfcentre.com/products/dtk-evo-sls-concept-blue-2026?variant=52802136736081'>Duotone Evo SLS Concept Blue - Natural / 07.0</a> <span class='tag good'>-25% sale</span></td><td><span class='out'>Sold out</span></td><td class='num'>1,184.25 GBP<div class='muted'><s>1,579</s></div></td><td class='num'><b>&euro;1,458</b></td></tr>
+<tr class='dim'><td>The Kitesurf Centre (UK)</td><td><span class='year'>2026</span> <a href='https://www.thekitesurfcentre.com/products/dtk-evo-sls-2026?variant=52802136244561'>Duotone Evo SLS - Green/Purple / 07.0</a> <span class='tag good'>-25% sale</span></td><td><span class='out'>Sold out</span></td><td class='num'>1,184.25 GBP<div class='muted'><s>1,579</s></div></td><td class='num'><b>&euro;1,458</b></td></tr>
+<tr class='dim'><td>Kitemana (NL)</td><td><span class='year'>2026</span> <a href='https://www.kitemana.nl/duotone-kiteboarding/evo-sls-2026-kite-117405'>Evo SLS 2026 Kite 7m: C05 Concept Blue Undyed</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,919 EUR</td><td class='num'><b>&euro;1,919</b></td></tr>
+<tr class='dim'><td>Kitejunkie (DE)</td><td><span class='year'>2026</span> <a href='https://kitejunkie.com/products/duotone-evo-sls-2026?variant=51198229348690'>Duotone Evo SLS 2026 - 7 / Green/Purple</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,919 EUR</td><td class='num'><b>&euro;1,919</b></td></tr>
+<tr class='dim'><td>Kitejunkie (DE)</td><td><span class='year'>2026</span> <a href='https://kitejunkie.com/products/duotone-evo-sls-2026?variant=51198229578066'>Duotone Evo SLS 2026 - 7 / Dark-grey/Turquoise</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,919 EUR</td><td class='num'><b>&euro;1,919</b></td></tr>
+<tr class='dim'><td>Kitejunkie (DE)</td><td><span class='year'>2026</span> <a href='https://kitejunkie.com/products/duotone-evo-sls-2026?variant=51903630737746'>Duotone Evo SLS 2026 - 7 / Concept Blue</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,919 EUR</td><td class='num'><b>&euro;1,919</b></td></tr>
+<tr class='dim'><td>Worthing Watersports (UK)</td><td><span class='year'>2026</span> <a href='https://worthingwatersports.com/products/dtk-evo-sls-2026?variant=56358977470847'>Duotone Evo SLS 2026 - C12green/purple / 7</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,579 GBP</td><td class='num'><b>&euro;1,920</b></td></tr>
+<tr class='dim'><td>Worthing Watersports (UK)</td><td><span class='year'>2026</span> <a href='https://worthingwatersports.com/products/dtk-evo-sls-2026?variant=56358977700223'>Duotone Evo SLS 2026 - C13dark-grey/turquoise / 7</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,579 GBP</td><td class='num'><b>&euro;1,920</b></td></tr>
+<tr class='dim'><td>Worthing Watersports (UK)</td><td><span class='year'>2026</span> <a href='https://worthingwatersports.com/products/dtk-evo-sls-concept-blue-2026?variant=56358978355583'>Duotone Evo SLS Concept Blue 2026 - C05undyed / 7</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,579 GBP</td><td class='num'><b>&euro;1,920</b></td></tr>
+</tbody></table></div>
+<h2>Listed as new on second-hand sites</h2>
+<div class="muted" style="margin:-4px 0 8px">Condition marked new/unused by the seller &middot; check the listing before buying</div>
+<div class="card wrap"><table>
+<thead><tr><th>Site</th><th>Listing</th><th class='num'>Asking price</th><th class='num'>Delivered (est.)</th></tr></thead>
+<tbody>
+<tr><td colspan='4' class='muted'>No new, unused Evo SLS 7m listed right now.</td></tr>
+</tbody></table></div>
+</section>
+<section class="panel" id="panel-8" role="tabpanel" aria-labelledby="tab-8">
+<div class='hero '><div class='label'>No deal yet &middot; cheapest in stock</div><div class='big'>&euro;2,014</div><div>2026 model at <a href='https://worthingwatersports.com/products/dtk-evo-sls-2026?variant=56358977503615'>Worthing Watersports (UK)</a> &middot; delivered, estimated &middot; alert at &euro;1,700 or less</div></div>
+<h2>Cheapest delivered price in stock, per day</h2>
+<div class="card chart" data-size="8"><div class="legend"></div><div class="plot"></div><div class="tip"></div></div>
+<h2>Shops</h2>
+<div class="card wrap"><table>
+<thead><tr><th>Shop</th><th>Kite</th><th>Stock</th><th class="num">Shop price</th><th class="num">Delivered (est.)</th></tr></thead>
+<tbody>
+<tr><td>Worthing Watersports (UK)</td><td><span class='year'>2026</span> <a href='https://worthingwatersports.com/products/dtk-evo-sls-2026?variant=56358977732991'>Duotone Evo SLS 2026 - C13dark-grey/turquoise / 8</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,659 GBP</td><td class='num'><b>&euro;2,014</b></td></tr>
+<tr><td>Kiteshop.com (UK)</td><td><span class='year'>2026</span> <a href='https://kiteshop.com/products/duotone-evo-sls?variant=54951454605697'>Duotone EVO SLS 2026 - Grey / 8.0m</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,659 GBP</td><td class='num'><b>&euro;2,014</b></td></tr>
+<tr><td>Kiteshop.com (UK)</td><td><span class='year'>2026</span> <a href='https://kiteshop.com/products/duotone-evo-sls?variant=54951454835073'>Duotone EVO SLS 2026 - White / 8.0m</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,659 GBP</td><td class='num'><b>&euro;2,014</b></td></tr>
+<tr><td>Worthing Watersports (UK)</td><td><span class='year'>2026</span> <a href='https://worthingwatersports.com/products/dtk-evo-sls-2026?variant=56358977503615'>Duotone Evo SLS 2026 - C12green/purple / 8</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,659 GBP</td><td class='num'><b>&euro;2,014</b></td></tr>
+<tr><td>Kiteshop.com (UK)</td><td><span class='year'>2026</span> <a href='https://kiteshop.com/products/duotone-evo-sls?variant=54951454376321'>Duotone EVO SLS 2026 - Green / 8.0m</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,659 GBP</td><td class='num'><b>&euro;2,014</b></td></tr>
+<tr class='dim'><td>The Kitesurf Centre (UK)</td><td><span class='year'>2026</span> <a href='https://www.thekitesurfcentre.com/products/dtk-evo-sls-concept-blue-2026?variant=52802136768849'>Duotone Evo SLS Concept Blue - Natural / 08.0</a> <span class='tag good'>-25% sale</span></td><td><span class='out'>Sold out</span></td><td class='num'>1,244.25 GBP<div class='muted'><s>1,659</s></div></td><td class='num'><b>&euro;1,528</b></td></tr>
+<tr class='dim'><td>The Kitesurf Centre (UK)</td><td><span class='year'>2026</span> <a href='https://www.thekitesurfcentre.com/products/dtk-evo-sls-2026?variant=52802136277329'>Duotone Evo SLS - Green/Purple / 08.0</a> <span class='tag good'>-25% sale</span></td><td><span class='out'>Sold out</span></td><td class='num'>1,244.25 GBP<div class='muted'><s>1,659</s></div></td><td class='num'><b>&euro;1,528</b></td></tr>
+<tr class='dim'><td>Kitejunkie (DE)</td><td><span class='year'>2026</span> <a href='https://kitejunkie.com/products/duotone-evo-sls-2026?variant=51198229610834'>Duotone Evo SLS 2026 - 8 / Dark-grey/Turquoise</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,999 EUR</td><td class='num'><b>&euro;1,999</b></td></tr>
+<tr class='dim'><td>Kitemana (NL)</td><td><span class='year'>2026</span> <a href='https://www.kitemana.nl/duotone-kiteboarding/evo-sls-2026-kite-117405'>Evo SLS 2026 Kite 8m: C05 Concept Blue Undyed</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,999 EUR</td><td class='num'><b>&euro;1,999</b></td></tr>
+<tr class='dim'><td>Kitemana (NL)</td><td><span class='year'>2026</span> <a href='https://www.kitemana.nl/duotone-kiteboarding/evo-sls-2026-kite-117405'>Evo SLS 2026 Kite 8m: C12 Green / Purple</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,999 EUR</td><td class='num'><b>&euro;1,999</b></td></tr>
+<tr class='dim'><td>Kitejunkie (DE)</td><td><span class='year'>2026</span> <a href='https://kitejunkie.com/products/duotone-evo-sls-2026?variant=51198229381458'>Duotone Evo SLS 2026 - 8 / Green/Purple</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,999 EUR</td><td class='num'><b>&euro;1,999</b></td></tr>
+<tr class='dim'><td>Kitemana (NL)</td><td><span class='year'>2026</span> <a href='https://www.kitemana.nl/duotone-kiteboarding/evo-sls-2026-kite-117405'>Evo SLS 2026 Kite 8m: C13 Dark-Grey / Turquoise</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,999 EUR</td><td class='num'><b>&euro;1,999</b></td></tr>
+<tr class='dim'><td>Kitejunkie (DE)</td><td><span class='year'>2026</span> <a href='https://kitejunkie.com/products/duotone-evo-sls-2026?variant=51903630770514'>Duotone Evo SLS 2026 - 8 / Concept Blue</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,999 EUR</td><td class='num'><b>&euro;1,999</b></td></tr>
+<tr class='dim'><td>The Kitesurf Centre (UK)</td><td><span class='year'>2026</span> <a href='https://www.thekitesurfcentre.com/products/dtk-evo-sls-2026?variant=52802136506705'>Duotone Evo SLS - Dark Grey/Turquoise / 08.0</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,659 GBP</td><td class='num'><b>&euro;2,014</b></td></tr>
+<tr class='dim'><td>Worthing Watersports (UK)</td><td><span class='year'>2026</span> <a href='https://worthingwatersports.com/products/dtk-evo-sls-concept-blue-2026?variant=56358978388351'>Duotone Evo SLS Concept Blue 2026 - C05undyed / 8</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,659 GBP</td><td class='num'><b>&euro;2,014</b></td></tr>
+</tbody></table></div>
+<h2>Listed as new on second-hand sites</h2>
+<div class="muted" style="margin:-4px 0 8px">Condition marked new/unused by the seller &middot; check the listing before buying</div>
+<div class="card wrap"><table>
+<thead><tr><th>Site</th><th>Listing</th><th class='num'>Asking price</th><th class='num'>Delivered (est.)</th></tr></thead>
+<tbody>
+<tr><td colspan='4' class='muted'>No new, unused Evo SLS 8m listed right now.</td></tr>
+</tbody></table></div>
+</section>
+<section class="panel" id="panel-9" role="tabpanel" aria-labelledby="tab-9">
+<div class='hero deal'><div class='label'>Deal found</div><div class='big'>&euro;1,366</div><div>2026 model listed new on <a href='https://www.kleinanzeigen.de/s-anzeige/duotone-kite-evo-sls-2026-in-9qm-zustandskategorie-1/3490436011-230-3223'>Kleinanzeigen (DE)</a> &middot; delivered, estimated &middot; alert at &euro;1,770 or less</div></div>
+<h2>Cheapest delivered price in stock, per day</h2>
+<div class="card chart" data-size="9"><div class="legend"></div><div class="plot"></div><div class="tip"></div></div>
+<h2>Shops</h2>
+<div class="card wrap"><table>
+<thead><tr><th>Shop</th><th>Kite</th><th>Stock</th><th class="num">Shop price</th><th class="num">Delivered (est.)</th></tr></thead>
+<tbody>
+<tr><td>The Kitesurf Centre (UK)</td><td><span class='year'>2026</span> <a href='https://www.thekitesurfcentre.com/products/dtk-evo-sls-concept-blue-2026?variant=52802136801617'>Duotone Evo SLS Concept Blue - Natural / 09.0</a> <span class='tag good'>Deal</span> <span class='tag good'>-25% sale</span></td><td><span class='in'>In stock</span></td><td class='num'>1,304.25 GBP<div class='muted'><s>1,739</s></div></td><td class='num'><b>&euro;1,598</b></td></tr>
+<tr><td>Worthing Watersports (UK)</td><td><span class='year'>2026</span> <a href='https://worthingwatersports.com/products/dtk-evo-sls-2026?variant=56358977765759'>Duotone Evo SLS 2026 - C13dark-grey/turquoise / 9</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,739 GBP</td><td class='num'><b>&euro;2,108</b></td></tr>
+<tr><td>Kiteshop.com (UK)</td><td><span class='year'>2026</span> <a href='https://kiteshop.com/products/duotone-evo-sls?variant=54951454638465'>Duotone EVO SLS 2026 - Grey / 9.0m</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,739 GBP</td><td class='num'><b>&euro;2,108</b></td></tr>
+<tr><td>Kiteshop.com (UK)</td><td><span class='year'>2026</span> <a href='https://kiteshop.com/products/duotone-evo-sls?variant=54951454409089'>Duotone EVO SLS 2026 - Green / 9.0m</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,739 GBP</td><td class='num'><b>&euro;2,108</b></td></tr>
+<tr><td>Worthing Watersports (UK)</td><td><span class='year'>2026</span> <a href='https://worthingwatersports.com/products/dtk-evo-sls-concept-blue-2026?variant=56358978421119'>Duotone Evo SLS Concept Blue 2026 - C05undyed / 9</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,739 GBP</td><td class='num'><b>&euro;2,108</b></td></tr>
+<tr><td>Kiteshop.com (UK)</td><td><span class='year'>2026</span> <a href='https://kiteshop.com/products/duotone-evo-sls?variant=54951454867841'>Duotone EVO SLS 2026 - White / 9.0m</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,739 GBP</td><td class='num'><b>&euro;2,108</b></td></tr>
+<tr class='dim'><td>The Kitesurf Centre (UK)</td><td><span class='year'>2026</span> <a href='https://www.thekitesurfcentre.com/products/dtk-evo-sls-2026?variant=52802136310097'>Duotone Evo SLS - Green/Purple / 09.0</a> <span class='tag good'>-25% sale</span></td><td><span class='out'>Sold out</span></td><td class='num'>1,304.25 GBP<div class='muted'><s>1,739</s></div></td><td class='num'><b>&euro;1,598</b></td></tr>
+<tr class='dim'><td>Kitemana (NL)</td><td><span class='year'>2026</span> <a href='https://www.kitemana.nl/duotone-kiteboarding/evo-sls-2026-kite-117405'>Evo SLS 2026 Kite 9m: C13 Dark-Grey / Turquoise</a> </td><td><span class='out'>Sold out</span></td><td class='num'>2,079 EUR</td><td class='num'><b>&euro;2,079</b></td></tr>
+<tr class='dim'><td>Kitejunkie (DE)</td><td><span class='year'>2026</span> <a href='https://kitejunkie.com/products/duotone-evo-sls-2026?variant=51903630803282'>Duotone Evo SLS 2026 - 9 / Concept Blue</a> </td><td><span class='out'>Sold out</span></td><td class='num'>2,079 EUR</td><td class='num'><b>&euro;2,079</b></td></tr>
+<tr class='dim'><td>Kitemana (NL)</td><td><span class='year'>2026</span> <a href='https://www.kitemana.nl/duotone-kiteboarding/evo-sls-2026-kite-117405'>Evo SLS 2026 Kite 9m: C05 Concept Blue Undyed</a> </td><td><span class='out'>Sold out</span></td><td class='num'>2,079 EUR</td><td class='num'><b>&euro;2,079</b></td></tr>
+<tr class='dim'><td>Kitemana (NL)</td><td><span class='year'>2026</span> <a href='https://www.kitemana.nl/duotone-kiteboarding/evo-sls-2026-kite-117405'>Evo SLS 2026 Kite 9m: C12 Green / Purple</a> </td><td><span class='out'>Sold out</span></td><td class='num'>2,079 EUR</td><td class='num'><b>&euro;2,079</b></td></tr>
+<tr class='dim'><td>Kitejunkie (DE)</td><td><span class='year'>2026</span> <a href='https://kitejunkie.com/products/duotone-evo-sls-2026?variant=51198229414226'>Duotone Evo SLS 2026 - 9 / Green/Purple</a> </td><td><span class='out'>Sold out</span></td><td class='num'>2,079 EUR</td><td class='num'><b>&euro;2,079</b></td></tr>
+<tr class='dim'><td>Kitejunkie (DE)</td><td><span class='year'>2026</span> <a href='https://kitejunkie.com/products/duotone-evo-sls-2026?variant=51198229643602'>Duotone Evo SLS 2026 - 9 / Dark-grey/Turquoise</a> </td><td><span class='out'>Sold out</span></td><td class='num'>2,079 EUR</td><td class='num'><b>&euro;2,079</b></td></tr>
+<tr class='dim'><td>The Kitesurf Centre (UK)</td><td><span class='year'>2026</span> <a href='https://www.thekitesurfcentre.com/products/dtk-evo-sls-2026?variant=52802136539473'>Duotone Evo SLS - Dark Grey/Turquoise / 09.0</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,739 GBP</td><td class='num'><b>&euro;2,108</b></td></tr>
+<tr class='dim'><td>Worthing Watersports (UK)</td><td><span class='year'>2026</span> <a href='https://worthingwatersports.com/products/dtk-evo-sls-2026?variant=56358977536383'>Duotone Evo SLS 2026 - C12green/purple / 9</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,739 GBP</td><td class='num'><b>&euro;2,108</b></td></tr>
+</tbody></table></div>
+<h2>Listed as new on second-hand sites</h2>
+<div class="muted" style="margin:-4px 0 8px">Condition marked new/unused by the seller &middot; check the listing before buying</div>
+<div class="card wrap"><table>
+<thead><tr><th>Site</th><th>Listing</th><th class='num'>Asking price</th><th class='num'>Delivered (est.)</th></tr></thead>
+<tbody>
+<tr><td>Kleinanzeigen (DE)</td><td><span class='year'>2026</span> <a href='https://www.kleinanzeigen.de/s-anzeige/duotone-kite-evo-sls-2026-in-9qm-zustandskategorie-1/3490436011-230-3223'>Duotone Kite Evo SLS 2026 in 9qm Zustandskategorie 1</a> <span class='tag good'>Deal</span> <span class='tag good'>New listing</span><div class='muted'>21423 Winsen (Luhe) (DE) &middot; 20.09.2026 &middot; ships</div></td><td class='num'>&euro;1,351</td><td class='num'><b>&euro;1,366</b></td></tr>
+<tr><td>Kleinanzeigen (DE)</td><td><a href='https://www.kleinanzeigen.de/s-anzeige/evo-sls-in-9-duotone-neu-kite/3521589390-230-2653'>Evo Sls in 9 Duotone Neu Kite</a> <span class='tag good'>Deal</span> <span class='tag good'>New listing</span><div class='muted'>27711 Osterholz-Scharmbeck (DE) &middot; 24.09.2026 &middot; ships</div></td><td class='num'><span class='muted'>negotiable</span> &euro;1,399</td><td class='num'><b>&euro;1,414</b></td></tr>
+</tbody></table></div>
+</section>
+<section class="panel" id="panel-10" role="tabpanel" aria-labelledby="tab-10">
+<div class='hero deal'><div class='label'>Deal found</div><div class='big'>&euro;1,165</div><div>2024 model listed new on <a href='https://www.kleinanzeigen.de/s-anzeige/duotone-evo-sls-10m-2024-neu/3474698195-230-8355'>Kleinanzeigen (DE)</a> &middot; delivered, estimated &middot; alert at &euro;1,850 or less</div></div>
+<h2>Cheapest delivered price in stock, per day</h2>
+<div class="card chart" data-size="10"><div class="legend"></div><div class="plot"></div><div class="tip"></div></div>
+<h2>Shops</h2>
 <div class="card wrap"><table>
 <thead><tr><th>Shop</th><th>Kite</th><th>Stock</th><th class="num">Shop price</th><th class="num">Delivered (est.)</th></tr></thead>
 <tbody>
 <tr><td>Kitemana (NL)</td><td><span class='year'>2026</span> <a href='https://www.kitemana.nl/duotone-kiteboarding/evo-sls-2026-kite-117405'>Evo SLS 2026 Kite 10m: C13 Dark-Grey / Turquoise</a> </td><td><span class='in'>In stock</span></td><td class='num'>2,159 EUR</td><td class='num'><b>&euro;2,159</b></td></tr>
 <tr><td>Kitemana (NL)</td><td><span class='year'>2026</span> <a href='https://www.kitemana.nl/duotone-kiteboarding/evo-sls-2026-kite-117405'>Evo SLS 2026 Kite 10m: C12 Green / Purple</a> </td><td><span class='in'>In stock</span></td><td class='num'>2,159 EUR</td><td class='num'><b>&euro;2,159</b></td></tr>
 <tr><td>Kiteshop.com (UK)</td><td><span class='year'>2026</span> <a href='https://kiteshop.com/products/duotone-evo-sls?variant=54951454671233'>Duotone EVO SLS 2026 - Grey / 10.0m</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,819 GBP</td><td class='num'><b>&euro;2,202</b></td></tr>
-<tr><td>Kiteshop.com (UK)</td><td><span class='year'>2026</span> <a href='https://kiteshop.com/products/duotone-evo-sls?variant=54951454900609'>Duotone EVO SLS 2026 - White / 10.0m</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,819 GBP</td><td class='num'><b>&euro;2,202</b></td></tr>
 <tr><td>Kiteshop.com (UK)</td><td><span class='year'>2026</span> <a href='https://kiteshop.com/products/duotone-evo-sls?variant=54951454441857'>Duotone EVO SLS 2026 - Green / 10.0m</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,819 GBP</td><td class='num'><b>&euro;2,202</b></td></tr>
+<tr><td>Kiteshop.com (UK)</td><td><span class='year'>2026</span> <a href='https://kiteshop.com/products/duotone-evo-sls?variant=54951454900609'>Duotone EVO SLS 2026 - White / 10.0m</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,819 GBP</td><td class='num'><b>&euro;2,202</b></td></tr>
 <tr class='dim'><td>The Kitesurf Centre (UK)</td><td><span class='year'>2026</span> <a href='https://www.thekitesurfcentre.com/products/dtk-evo-sls-concept-blue-2026?variant=52802136834385'>Duotone Evo SLS Concept Blue - Natural / 10.0</a> <span class='tag good'>-25% sale</span></td><td><span class='out'>Sold out</span></td><td class='num'>1,364.25 GBP<div class='muted'><s>1,819</s></div></td><td class='num'><b>&euro;1,669</b></td></tr>
 <tr class='dim'><td>The Kitesurf Centre (UK)</td><td><span class='year'>2026</span> <a href='https://www.thekitesurfcentre.com/products/dtk-evo-sls-2026?variant=52802136342865'>Duotone Evo SLS - Green/Purple / 10.0</a> <span class='tag good'>-25% sale</span></td><td><span class='out'>Sold out</span></td><td class='num'>1,364.25 GBP<div class='muted'><s>1,819</s></div></td><td class='num'><b>&euro;1,669</b></td></tr>
-<tr class='dim'><td>Kitejunkie (DE)</td><td><span class='year'>2026</span> <a href='https://kitejunkie.com/products/duotone-evo-sls-2026?variant=51198229676370'>Duotone Evo SLS 2026 - 10 / Dark-grey/Turquoise</a> </td><td><span class='out'>Sold out</span></td><td class='num'>2,159 EUR</td><td class='num'><b>&euro;2,159</b></td></tr>
-<tr class='dim'><td>Kitejunkie (DE)</td><td><span class='year'>2026</span> <a href='https://kitejunkie.com/products/duotone-evo-sls-2026?variant=51903630836050'>Duotone Evo SLS 2026 - 10 / Concept Blue</a> </td><td><span class='out'>Sold out</span></td><td class='num'>2,159 EUR</td><td class='num'><b>&euro;2,159</b></td></tr>
-<tr class='dim'><td>Kitemana (NL)</td><td><span class='year'>2026</span> <a href='https://www.kitemana.nl/duotone-kiteboarding/evo-sls-2026-kite-117405'>Evo SLS 2026 Kite 10m: C05 Concept Blue Undyed</a> </td><td><span class='out'>Sold out</span></td><td class='num'>2,159 EUR</td><td class='num'><b>&euro;2,159</b></td></tr>
 <tr class='dim'><td>Kitejunkie (DE)</td><td><span class='year'>2026</span> <a href='https://kitejunkie.com/products/duotone-evo-sls-2026?variant=51198229446994'>Duotone Evo SLS 2026 - 10 / Green/Purple</a> </td><td><span class='out'>Sold out</span></td><td class='num'>2,159 EUR</td><td class='num'><b>&euro;2,159</b></td></tr>
-<tr class='dim'><td>The Kitesurf Centre (UK)</td><td><span class='year'>2026</span> <a href='https://www.thekitesurfcentre.com/products/dtk-evo-sls-2026?variant=52802136572241'>Duotone Evo SLS - Dark Grey/Turquoise / 10.0</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,819 GBP</td><td class='num'><b>&euro;2,202</b></td></tr>
-<tr class='dim'><td>Worthing Watersports (UK)</td><td><span class='year'>2026</span> <a href='https://worthingwatersports.com/products/dtk-evo-sls-2026?variant=56358977798527'>Duotone Evo SLS 2026 - C13dark-grey/turquoise / 10</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,819 GBP</td><td class='num'><b>&euro;2,202</b></td></tr>
+<tr class='dim'><td>Kitejunkie (DE)</td><td><span class='year'>2026</span> <a href='https://kitejunkie.com/products/duotone-evo-sls-2026?variant=51903630836050'>Duotone Evo SLS 2026 - 10 / Concept Blue</a> </td><td><span class='out'>Sold out</span></td><td class='num'>2,159 EUR</td><td class='num'><b>&euro;2,159</b></td></tr>
+<tr class='dim'><td>Kitejunkie (DE)</td><td><span class='year'>2026</span> <a href='https://kitejunkie.com/products/duotone-evo-sls-2026?variant=51198229676370'>Duotone Evo SLS 2026 - 10 / Dark-grey/Turquoise</a> </td><td><span class='out'>Sold out</span></td><td class='num'>2,159 EUR</td><td class='num'><b>&euro;2,159</b></td></tr>
+<tr class='dim'><td>Kitemana (NL)</td><td><span class='year'>2026</span> <a href='https://www.kitemana.nl/duotone-kiteboarding/evo-sls-2026-kite-117405'>Evo SLS 2026 Kite 10m: C05 Concept Blue Undyed</a> </td><td><span class='out'>Sold out</span></td><td class='num'>2,159 EUR</td><td class='num'><b>&euro;2,159</b></td></tr>
 <tr class='dim'><td>Worthing Watersports (UK)</td><td><span class='year'>2026</span> <a href='https://worthingwatersports.com/products/dtk-evo-sls-2026?variant=56358977569151'>Duotone Evo SLS 2026 - C12green/purple / 10</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,819 GBP</td><td class='num'><b>&euro;2,202</b></td></tr>
+<tr class='dim'><td>The Kitesurf Centre (UK)</td><td><span class='year'>2026</span> <a href='https://www.thekitesurfcentre.com/products/dtk-evo-sls-2026?variant=52802136572241'>Duotone Evo SLS - Dark Grey/Turquoise / 10.0</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,819 GBP</td><td class='num'><b>&euro;2,202</b></td></tr>
 <tr class='dim'><td>Worthing Watersports (UK)</td><td><span class='year'>2026</span> <a href='https://worthingwatersports.com/products/dtk-evo-sls-concept-blue-2026?variant=56358978453887'>Duotone Evo SLS Concept Blue 2026 - C05undyed / 10</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,819 GBP</td><td class='num'><b>&euro;2,202</b></td></tr>
+<tr class='dim'><td>Worthing Watersports (UK)</td><td><span class='year'>2026</span> <a href='https://worthingwatersports.com/products/dtk-evo-sls-2026?variant=56358977798527'>Duotone Evo SLS 2026 - C13dark-grey/turquoise / 10</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,819 GBP</td><td class='num'><b>&euro;2,202</b></td></tr>
 </tbody></table></div>
 <h2>Listed as new on second-hand sites</h2>
 <div class="muted" style="margin:-4px 0 8px">Condition marked new/unused by the seller &middot; check the listing before buying</div>
 <div class="card wrap"><table>
-<thead><tr><th>Site</th><th>Listing</th><th class="num">Asking price</th><th class="num">Delivered (est.)</th></tr></thead>
+<thead><tr><th>Site</th><th>Listing</th><th class='num'>Asking price</th><th class='num'>Delivered (est.)</th></tr></thead>
 <tbody>
 <tr><td>Kleinanzeigen (DE)</td><td><span class='year'>2024</span> <a href='https://www.kleinanzeigen.de/s-anzeige/duotone-evo-sls-10m-2024-neu/3474698195-230-8355'>Duotone Evo SLS 10m 2024 neu</a> <span class='tag good'>Deal</span><div class='muted'>71522 Backnang (DE) &middot; 02.08.2026 &middot; ships</div></td><td class='num'><span class='muted'>negotiable</span> &euro;1,150</td><td class='num'><b>&euro;1,165</b></td></tr>
 <tr><td>Kleinanzeigen (DE)</td><td><a href='https://www.kleinanzeigen.de/s-anzeige/neu-duotone-evo-sls-10-0-concept-blue/3500917130-230-4898'>NEU : Duotone EVO SLS 10.0 Concept Blue</a> <span class='tag good'>Deal</span><div class='muted'>55252 Mainz-Kastel (DE) &middot; 01.09.2026 &middot; ships</div></td><td class='num'><span class='muted'>negotiable</span> &euro;1,480</td><td class='num'><b>&euro;1,495</b></td></tr>
 <tr><td>Kleinanzeigen (DE)</td><td><span class='year'>2026</span> <a href='https://www.kleinanzeigen.de/s-anzeige/neu-duotone-kite-evo-sls-concept-blue-2026-groesse-10-0/3510847238-230-5891'>NEU - Duotone Kite Evo SLS Concept Blue (2026), Gr&#246;&#223;e: 10.0</a> <span class='tag good'>Deal</span><div class='muted'>83666 Waakirchen (DE) &middot; 12.09.2026</div></td><td class='num'>&euro;1,490</td><td class='num'><b>&euro;1,505</b></td></tr>
-<tr class='dim'><td>Kleinanzeigen (DE)</td><td><span class='year'>2026</span> <a href='https://www.kleinanzeigen.de/s-anzeige/8-evo-sls-duotone-2026-neu-kite/3521221823-230-2715'>8 Evo SLS Duotone 2026 Neu Kite</a> <span class='tag'>Size not stated</span><div class='muted'>27628 Hagen im Bremischen (DE) &middot; 23.09.2026 &middot; ships</div></td><td class='num'>&euro;1,299</td><td class='num'><b>&euro;1,314</b></td></tr>
-<tr class='dim'><td>Kleinanzeigen (DE)</td><td><span class='year'>2026</span> <a href='https://www.kleinanzeigen.de/s-anzeige/duotone-evo-sls-kite-2026-neu/3237258562-230-617'>Duotone EVO SLS Kite 2026 Neu</a> <span class='tag'>Size not stated</span><div class='muted'>25469 Halstenbek (DE) &middot; 01.09.2026 &middot; ships</div></td><td class='num'><span class='muted'>negotiable</span> &euro;1,919</td><td class='num'><b>&euro;1,934</b></td></tr>
-<tr class='dim'><td>Kleinanzeigen (DE)</td><td><span class='year'>2026</span> <a href='https://www.kleinanzeigen.de/s-anzeige/duotone-evo-sls-2026-hardcore-sale/3310518734-230-3352'>Duotone EVO SLS 2026 - HARDCORE SALE</a> <span class='tag'>Size not stated</span><div class='muted'>10245 Friedrichshain (DE) &middot; yesterday, 11:04 &middot; ships</div></td><td class='num'><span class='muted'>price on request</span></td><td class='num'><b>&ndash;</b></td></tr>
-<tr class='dim'><td>Kleinanzeigen (DE)</td><td><span class='year'>2026</span> <a href='https://www.kleinanzeigen.de/s-anzeige/duotone-evo-sls-2026-concept-blue/3310360559-230-3352'>Duotone EVO SLS 2026 Concept Blue</a> <span class='tag'>Size not stated</span><div class='muted'>10245 Friedrichshain (DE) &middot; yesterday, 20:04 &middot; ships</div></td><td class='num'><span class='muted'>price on request</span></td><td class='num'><b>&ndash;</b></td></tr>
-<tr class='dim'><td>Kleinanzeigen (DE)</td><td><span class='year'>2026</span> <a href='https://www.kleinanzeigen.de/s-anzeige/duotone-evo-sls-2026-kite-neu-gebraucht/3332383443-230-427'>Duotone Evo SLS 2026 Kite NEU &amp; gebraucht</a> <span class='tag'>Size not stated</span><div class='muted'>23774 Heiligenhafen (DE) &middot; 19.09.2026 &middot; ships</div></td><td class='num'><span class='muted'>negotiable</span></td><td class='num'><b>&ndash;</b></td></tr>
 </tbody></table></div>
+</section>
+<section class="panel" id="panel-11" role="tabpanel" aria-labelledby="tab-11">
+<div class='hero '><div class='label'>No deal yet &middot; cheapest in stock</div><div class='big'>&euro;2,239</div><div>2026 model at <a href='https://www.kitemana.nl/duotone-kiteboarding/evo-sls-2026-kite-117405'>Kitemana (NL)</a> &middot; delivered, estimated &middot; alert at &euro;1,910 or less</div></div>
+<h2>Cheapest delivered price in stock, per day</h2>
+<div class="card chart" data-size="11"><div class="legend"></div><div class="plot"></div><div class="tip"></div></div>
+<h2>Shops</h2>
+<div class="card wrap"><table>
+<thead><tr><th>Shop</th><th>Kite</th><th>Stock</th><th class="num">Shop price</th><th class="num">Delivered (est.)</th></tr></thead>
+<tbody>
+<tr><td>Kitemana (NL)</td><td><span class='year'>2026</span> <a href='https://www.kitemana.nl/duotone-kiteboarding/evo-sls-2026-kite-117405'>Evo SLS 2026 Kite 11m: C05 Concept Blue Undyed</a> </td><td><span class='in'>In stock</span></td><td class='num'>2,239 EUR</td><td class='num'><b>&euro;2,239</b></td></tr>
+<tr><td>Kitemana (NL)</td><td><span class='year'>2026</span> <a href='https://www.kitemana.nl/duotone-kiteboarding/evo-sls-2026-kite-117405'>Evo SLS 2026 Kite 11m: C13 Dark-Grey / Turquoise</a> </td><td><span class='in'>In stock</span></td><td class='num'>2,239 EUR</td><td class='num'><b>&euro;2,239</b></td></tr>
+<tr><td>Kiteshop.com (UK)</td><td><span class='year'>2026</span> <a href='https://kiteshop.com/products/duotone-evo-sls?variant=54951454474625'>Duotone EVO SLS 2026 - Green / 11.0m</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,909 GBP</td><td class='num'><b>&euro;2,307</b></td></tr>
+<tr><td>Worthing Watersports (UK)</td><td><span class='year'>2026</span> <a href='https://worthingwatersports.com/products/dtk-evo-sls-2026?variant=56358977601919'>Duotone Evo SLS 2026 - C12green/purple / 11</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,909 GBP</td><td class='num'><b>&euro;2,307</b></td></tr>
+<tr><td>Kiteshop.com (UK)</td><td><span class='year'>2026</span> <a href='https://kiteshop.com/products/duotone-evo-sls?variant=54951454933377'>Duotone EVO SLS 2026 - White / 11.0m</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,909 GBP</td><td class='num'><b>&euro;2,307</b></td></tr>
+<tr><td>Kiteshop.com (UK)</td><td><span class='year'>2026</span> <a href='https://kiteshop.com/products/duotone-evo-sls?variant=54951454704001'>Duotone EVO SLS 2026 - Grey / 11.0m</a> </td><td><span class='in'>In stock</span></td><td class='num'>1,909 GBP</td><td class='num'><b>&euro;2,307</b></td></tr>
+<tr class='dim'><td>The Kitesurf Centre (UK)</td><td><span class='year'>2026</span> <a href='https://www.thekitesurfcentre.com/products/dtk-evo-sls-2026?variant=52802136375633'>Duotone Evo SLS - Green/Purple / 11.0</a> <span class='tag good'>-25% sale</span></td><td><span class='out'>Sold out</span></td><td class='num'>1,431.75 GBP<div class='muted'><s>1,909</s></div></td><td class='num'><b>&euro;1,748</b></td></tr>
+<tr class='dim'><td>The Kitesurf Centre (UK)</td><td><span class='year'>2026</span> <a href='https://www.thekitesurfcentre.com/products/dtk-evo-sls-concept-blue-2026?variant=52802136867153'>Duotone Evo SLS Concept Blue - Natural / 11.0</a> <span class='tag good'>-25% sale</span></td><td><span class='out'>Sold out</span></td><td class='num'>1,431.75 GBP<div class='muted'><s>1,909</s></div></td><td class='num'><b>&euro;1,748</b></td></tr>
+<tr class='dim'><td>Kitejunkie (DE)</td><td><span class='year'>2026</span> <a href='https://kitejunkie.com/products/duotone-evo-sls-2026?variant=51903630868818'>Duotone Evo SLS 2026 - 11 / Concept Blue</a> </td><td><span class='out'>Sold out</span></td><td class='num'>2,239 EUR</td><td class='num'><b>&euro;2,239</b></td></tr>
+<tr class='dim'><td>Kitemana (NL)</td><td><span class='year'>2026</span> <a href='https://www.kitemana.nl/duotone-kiteboarding/evo-sls-2026-kite-117405'>Evo SLS 2026 Kite 11m: C12 Green / Purple</a> </td><td><span class='out'>Sold out</span></td><td class='num'>2,239 EUR</td><td class='num'><b>&euro;2,239</b></td></tr>
+<tr class='dim'><td>Kitejunkie (DE)</td><td><span class='year'>2026</span> <a href='https://kitejunkie.com/products/duotone-evo-sls-2026?variant=51198229479762'>Duotone Evo SLS 2026 - 11 / Green/Purple</a> </td><td><span class='out'>Sold out</span></td><td class='num'>2,239 EUR</td><td class='num'><b>&euro;2,239</b></td></tr>
+<tr class='dim'><td>Kitejunkie (DE)</td><td><span class='year'>2026</span> <a href='https://kitejunkie.com/products/duotone-evo-sls-2026?variant=51198229709138'>Duotone Evo SLS 2026 - 11 / Dark-grey/Turquoise</a> </td><td><span class='out'>Sold out</span></td><td class='num'>2,239 EUR</td><td class='num'><b>&euro;2,239</b></td></tr>
+<tr class='dim'><td>The Kitesurf Centre (UK)</td><td><span class='year'>2026</span> <a href='https://www.thekitesurfcentre.com/products/dtk-evo-sls-2026?variant=52802136605009'>Duotone Evo SLS - Dark Grey/Turquoise / 11.0</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,909 GBP</td><td class='num'><b>&euro;2,307</b></td></tr>
+<tr class='dim'><td>Worthing Watersports (UK)</td><td><span class='year'>2026</span> <a href='https://worthingwatersports.com/products/dtk-evo-sls-2026?variant=56358977831295'>Duotone Evo SLS 2026 - C13dark-grey/turquoise / 11</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,909 GBP</td><td class='num'><b>&euro;2,307</b></td></tr>
+<tr class='dim'><td>Worthing Watersports (UK)</td><td><span class='year'>2026</span> <a href='https://worthingwatersports.com/products/dtk-evo-sls-concept-blue-2026?variant=56358978486655'>Duotone Evo SLS Concept Blue 2026 - C05undyed / 11</a> </td><td><span class='out'>Sold out</span></td><td class='num'>1,909 GBP</td><td class='num'><b>&euro;2,307</b></td></tr>
+</tbody></table></div>
+<h2>Listed as new on second-hand sites</h2>
+<div class="muted" style="margin:-4px 0 8px">Condition marked new/unused by the seller &middot; check the listing before buying</div>
+<div class="card wrap"><table>
+<thead><tr><th>Site</th><th>Listing</th><th class='num'>Asking price</th><th class='num'>Delivered (est.)</th></tr></thead>
+<tbody>
+<tr><td colspan='4' class='muted'>No new, unused Evo SLS 11m listed right now.</td></tr>
+</tbody></table></div>
+</section>
+<section class="panel" id="panel-unknown" role="tabpanel" aria-labelledby="tab-unknown">
+<h2>Listed as new, size not stated</h2>
+<div class="muted" style="margin:-4px 0 8px">These ads don't give a size in the title or preview. Open the ad to check - some sellers offer several sizes.</div>
+<div class="card wrap"><table>
+<thead><tr><th>Site</th><th>Listing</th><th class='num'>Asking price</th><th class='num'>Delivered (est.)</th></tr></thead>
+<tbody>
+<tr><td>Kleinanzeigen (DE)</td><td><span class='year'>2026</span> <a href='https://www.kleinanzeigen.de/s-anzeige/8-evo-sls-duotone-2026-neu-kite/3521221823-230-2715'>8 Evo SLS Duotone 2026 Neu Kite</a> <div class='muted'>27628 Hagen im Bremischen (DE) &middot; 23.09.2026 &middot; ships</div></td><td class='num'>&euro;1,299</td><td class='num'><b>&euro;1,314</b></td></tr>
+<tr><td>Kleinanzeigen (DE)</td><td><span class='year'>2026</span> <a href='https://www.kleinanzeigen.de/s-anzeige/duotone-evo-sls-kite-2026-neu/3237258562-230-617'>Duotone EVO SLS Kite 2026 Neu</a> <div class='muted'>25469 Halstenbek (DE) &middot; 01.09.2026 &middot; ships</div></td><td class='num'><span class='muted'>negotiable</span> &euro;1,919</td><td class='num'><b>&euro;1,934</b></td></tr>
+<tr><td>Kleinanzeigen (DE)</td><td><span class='year'>2026</span> <a href='https://www.kleinanzeigen.de/s-anzeige/duotone-evo-sls-2026-kite-neu-gebraucht/3332383443-230-427'>Duotone Evo SLS 2026 Kite NEU &amp; gebraucht</a> <div class='muted'>23774 Heiligenhafen (DE) &middot; 19.09.2026 &middot; ships</div></td><td class='num'><span class='muted'>negotiable</span></td><td class='num'><b>&ndash;</b></td></tr>
+<tr><td>Kleinanzeigen (DE)</td><td><span class='year'>2026</span> <a href='https://www.kleinanzeigen.de/s-anzeige/duotone-evo-sls-2026-concept-blue/3310360559-230-3352'>Duotone EVO SLS 2026 Concept Blue</a> <div class='muted'>10245 Friedrichshain (DE) &middot; 24.09.2026 &middot; ships</div></td><td class='num'><span class='muted'>price on request</span></td><td class='num'><b>&ndash;</b></td></tr>
+<tr><td>Kleinanzeigen (DE)</td><td><span class='year'>2026</span> <a href='https://www.kleinanzeigen.de/s-anzeige/duotone-evo-sls-2026-hardcore-sale/3310518734-230-3352'>Duotone EVO SLS 2026 - HARDCORE SALE</a> <div class='muted'>10245 Friedrichshain (DE) &middot; 24.09.2026 &middot; ships</div></td><td class='num'><span class='muted'>price on request</span></td><td class='num'><b>&ndash;</b></td></tr>
+</tbody></table></div>
+</section>
 <footer class="muted">Delivered = shop price in EUR (ECB rates) + shipping to Belgium; UK shops swap UK VAT for 21% Belgian import VAT and add handling fees. Shipping and fees are estimates set in config.json. Customs duty on non-EU-made kites may add a few percent.</footer>
 </main>
-<script type="application/json" id="hist">{"dates":["2026-09-25"],"threshold":1850,"series":[{"name":"2024 model","values":[1165]},{"name":"2026 model","values":[1505]}]}</script>
+<script type="application/json" id="hist">{"dates":["2026-09-25","2026-09-26"],"charts":{"7":{"threshold":1630,"series":[{"name":"2026 model","slot":1,"values":[null,1919]}]},"8":{"threshold":1700,"series":[{"name":"2026 model","slot":1,"values":[null,2014]}]},"9":{"threshold":1770,"series":[{"name":"2026 model","slot":1,"values":[null,1366]}]},"10":{"threshold":1850,"series":[{"name":"2024 model","slot":0,"values":[1165,1165]},{"name":"2026 model","slot":1,"values":[1505,1505]}]},"11":{"threshold":1910,"series":[{"name":"2026 model","slot":1,"values":[null,2239]}]}}}</script>
 <script>
 (function () {
+  // ----- tabs (last choice remembered in this browser) -----
+  const tabs = [...document.querySelectorAll('.tab')];
+  function show(id) {
+    tabs.forEach(t => t.setAttribute('aria-selected', t.dataset.tab === id ? 'true' : 'false'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + id));
+    try { localStorage.setItem('kite-tab', id); } catch (e) {}
+  }
+  tabs.forEach(t => t.addEventListener('click', () => show(t.dataset.tab)));
+  document.querySelector('.tabs').addEventListener('keydown', e => {
+    const i = tabs.findIndex(t => t.getAttribute('aria-selected') === 'true');
+    const j = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : -1;
+    if (j >= 0 && j < tabs.length) { show(tabs[j].dataset.tab); tabs[j].focus(); }
+  });
+  let start = null;
+  try { start = localStorage.getItem('kite-tab'); } catch (e) {}
+  if (!tabs.some(t => t.dataset.tab === start)) start = (tabs.find(t => t.dataset.tab === '10') || tabs[0]).dataset.tab;
+  show(start);
+
+  // ----- charts -----
   const d = JSON.parse(document.getElementById('hist').textContent);
-  const box = document.getElementById('chart'), tip = document.getElementById('tip');
   const colors = ['var(--s1)', 'var(--s2)', 'var(--s3)', 'var(--s4)'];
   const fmt = v => String.fromCharCode(8364) + Math.round(v).toLocaleString('en-US');
-  const all = d.series.flatMap(s => s.values).filter(v => v != null).concat([d.threshold]);
-  if (!d.dates.length) { box.textContent = 'No history yet.'; return; }
-
-  const W = 900, H = 280, m = { l: 56, r: 110, t: 12, b: 28 };
-  let lo = Math.min(...all), hi = Math.max(...all);
-  const step = (hi - lo) > 600 ? 250 : 100;
-  lo = Math.floor((lo - step / 2) / step) * step; hi = Math.ceil((hi + step / 2) / step) * step;
-  const t = d.dates.map(s => new Date(s + 'T12:00:00').getTime());
-  const t0 = t[0], t1 = t[t.length - 1];
-  const x = v => t1 === t0 ? (m.l + W - m.r) / 2 : m.l + (v - t0) / (t1 - t0) * (W - m.l - m.r);
-  const y = v => m.t + (hi - v) / (hi - lo) * (H - m.t - m.b);
   const ns = 'http://www.w3.org/2000/svg';
-  const el = (n, a, p) => { const e = document.createElementNS(ns, n); for (const k in a) e.setAttribute(k, a[k]); (p || svg).appendChild(e); return e; };
+  const t = d.dates.map(s => new Date(s + 'T12:00:00').getTime());
 
-  const svg = document.createElementNS(ns, 'svg');
-  svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.setAttribute('width', '100%');
-  svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', 'Cheapest delivered price per day by model year');
-  box.appendChild(svg);
+  document.querySelectorAll('.chart').forEach(card => {
+    const c = d.charts[card.dataset.size];
+    const box = card.querySelector('.plot'), tip = card.querySelector('.tip');
+    if (!c || !c.series.length) { box.innerHTML = '<div class="empty">No in-stock prices recorded for this size yet.</div>'; return; }
+    const color = s => colors[s.slot % colors.length];
+    const all = c.series.flatMap(s => s.values).filter(v => v != null).concat([c.threshold]);
 
-  for (let v = lo; v <= hi; v += step) {
-    el('line', { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), stroke: 'var(--grid)', 'stroke-width': 1 });
-    el('text', { x: m.l - 8, y: y(v) + 4, 'text-anchor': 'end' }).textContent = fmt(v);
-  }
-  const nLabels = Math.min(d.dates.length, 6);
-  for (let i = 0; i < nLabels; i++) {
-    const k = nLabels === 1 ? 0 : Math.round(i * (d.dates.length - 1) / (nLabels - 1));
-    const dt = new Date(t[k]);
-    el('text', { x: x(t[k]), y: H - 8, 'text-anchor': 'middle' }).textContent =
-      dt.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
-  }
-  el('line', { x1: m.l, x2: W - m.r, y1: y(d.threshold), y2: y(d.threshold), stroke: 'var(--muted)', 'stroke-width': 1.5, 'stroke-dasharray': '5 4' });
-  el('text', { x: W - m.r + 6, y: y(d.threshold) + 4 }).textContent = 'Alert ' + fmt(d.threshold);
+    const W = 900, H = 280, m = { l: 56, r: 110, t: 12, b: 28 };
+    let lo = Math.min(...all), hi = Math.max(...all);
+    const step = (hi - lo) > 600 ? 250 : 100;
+    lo = Math.floor((lo - step / 2) / step) * step; hi = Math.ceil((hi + step / 2) / step) * step;
+    const t0 = t[0], t1 = t[t.length - 1];
+    const x = v => t1 === t0 ? (m.l + W - m.r) / 2 : m.l + (v - t0) / (t1 - t0) * (W - m.l - m.r);
+    const y = v => m.t + (hi - v) / (hi - lo) * (H - m.t - m.b);
+    const svg = document.createElementNS(ns, 'svg');
+    const el = (n, a) => { const e = document.createElementNS(ns, n); for (const k in a) e.setAttribute(k, a[k]); svg.appendChild(e); return e; };
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.setAttribute('width', '100%');
+    svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', 'Cheapest delivered price per day by model year, ' + card.dataset.size + 'm');
+    box.appendChild(svg);
 
-  d.series.forEach((s, i) => {
-    const c = colors[i % colors.length];
-    let path = '', pen = false;
-    s.values.forEach((v, k) => {
-      if (v == null) { pen = false; return; }
-      path += (pen ? 'L' : 'M') + x(t[k]) + ' ' + y(v) + ' '; pen = true;
-    });
-    if (path) el('path', { d: path, fill: 'none', stroke: c, 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' });
-    s.values.forEach((v, k) => { if (v != null) el('circle', { cx: x(t[k]), cy: y(v), r: 4, fill: c, stroke: 'var(--card)', 'stroke-width': 2 }); });
-    const lastK = s.values.map((v, k) => v == null ? -1 : k).filter(k => k >= 0).pop();
-    if (lastK != null && lastK >= 0 && d.series.length <= 4) {
-      el('text', { x: x(t[lastK]) + 10, y: y(s.values[lastK]) + 4, class: 'lbl' }).textContent = s.name.replace(' model', '');
+    for (let v = lo; v <= hi; v += step) {
+      el('line', { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), stroke: 'var(--grid)', 'stroke-width': 1 });
+      el('text', { x: m.l - 8, y: y(v) + 4, 'text-anchor': 'end' }).textContent = fmt(v);
     }
-  });
+    const nLabels = Math.min(d.dates.length, 6);
+    for (let i = 0; i < nLabels; i++) {
+      const k = nLabels === 1 ? 0 : Math.round(i * (d.dates.length - 1) / (nLabels - 1));
+      el('text', { x: x(t[k]), y: H - 8, 'text-anchor': 'middle' }).textContent =
+        new Date(t[k]).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+    }
+    el('line', { x1: m.l, x2: W - m.r, y1: y(c.threshold), y2: y(c.threshold), stroke: 'var(--muted)', 'stroke-width': 1.5, 'stroke-dasharray': '5 4' });
+    el('text', { x: W - m.r + 6, y: y(c.threshold) + 4 }).textContent = 'Alert ' + fmt(c.threshold);
 
-  const legend = document.getElementById('legend');
-  legend.innerHTML = d.series.map((s, i) => `<span><i style="background:${colors[i % colors.length]}"></i>${s.name}</span>`).join('') +
-    '<span><i class="dash"></i>Alert price</span>';
+    c.series.forEach(s => {
+      let path = '', pen = false;
+      s.values.forEach((v, k) => {
+        if (v == null) { pen = false; return; }
+        path += (pen ? 'L' : 'M') + x(t[k]) + ' ' + y(v) + ' '; pen = true;
+      });
+      if (path) el('path', { d: path, fill: 'none', stroke: color(s), 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' });
+      s.values.forEach((v, k) => { if (v != null) el('circle', { cx: x(t[k]), cy: y(v), r: 4, fill: color(s), stroke: 'var(--card)', 'stroke-width': 2 }); });
+      const lastK = s.values.map((v, k) => v == null ? -1 : k).filter(k => k >= 0).pop();
+      if (lastK != null && c.series.length <= 4) {
+        el('text', { x: x(t[lastK]) + 10, y: y(s.values[lastK]) + 4, class: 'lbl' }).textContent = s.name.replace(' model', '');
+      }
+    });
 
-  const cross = el('line', { y1: m.t, y2: H - m.b, stroke: 'var(--muted)', 'stroke-width': 1, visibility: 'hidden' });
-  const hit = el('rect', { x: m.l, y: m.t, width: W - m.l - m.r, height: H - m.t - m.b, fill: 'transparent' });
-  hit.addEventListener('mousemove', e => {
-    const r = svg.getBoundingClientRect(), px = (e.clientX - r.left) * W / r.width;
-    let k = 0; t.forEach((v, j) => { if (Math.abs(x(v) - px) < Math.abs(x(t[k]) - px)) k = j; });
-    cross.setAttribute('x1', x(t[k])); cross.setAttribute('x2', x(t[k])); cross.setAttribute('visibility', 'visible');
-    tip.innerHTML = `<div class="muted">${new Date(t[k]).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' })}</div>` +
-      d.series.map((s, i) => `<div><i style="background:${colors[i % colors.length]}"></i>${s.name}: <b>${s.values[k] == null ? 'none in stock' : fmt(s.values[k])}</b></div>`).join('');
-    tip.style.display = 'block';
-    const bx = box.getBoundingClientRect(), left = e.clientX - bx.left + 14;
-    tip.style.left = Math.min(left, bx.width - tip.offsetWidth - 8) + 'px';
-    tip.style.top = (e.clientY - bx.top + 14) + 'px';
+    card.querySelector('.legend').innerHTML =
+      c.series.map(s => `<span><i style="background:${color(s)}"></i>${s.name}</span>`).join('') +
+      '<span><i class="dash"></i>Alert price</span>';
+
+    const cross = el('line', { y1: m.t, y2: H - m.b, stroke: 'var(--muted)', 'stroke-width': 1, visibility: 'hidden' });
+    const hit = el('rect', { x: m.l, y: m.t, width: W - m.l - m.r, height: H - m.t - m.b, fill: 'transparent' });
+    hit.addEventListener('mousemove', e => {
+      const r = svg.getBoundingClientRect(), px = (e.clientX - r.left) * W / r.width;
+      let k = 0; t.forEach((v, j) => { if (Math.abs(x(v) - px) < Math.abs(x(t[k]) - px)) k = j; });
+      cross.setAttribute('x1', x(t[k])); cross.setAttribute('x2', x(t[k])); cross.setAttribute('visibility', 'visible');
+      tip.innerHTML = `<div class="muted">${new Date(t[k]).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' })}</div>` +
+        c.series.map(s => `<div><i style="background:${color(s)}"></i>${s.name}: <b>${s.values[k] == null ? 'none in stock' : fmt(s.values[k])}</b></div>`).join('');
+      tip.style.display = 'block';
+      const bx = card.getBoundingClientRect(), left = e.clientX - bx.left + 14;
+      tip.style.left = Math.min(left, bx.width - tip.offsetWidth - 8) + 'px';
+      tip.style.top = (e.clientY - bx.top + 14) + 'px';
+    });
+    hit.addEventListener('mouseleave', () => { tip.style.display = 'none'; cross.setAttribute('visibility', 'hidden'); });
   });
-  hit.addEventListener('mouseleave', () => { tip.style.display = 'none'; cross.setAttribute('visibility', 'hidden'); });
 })();
 </script>
 </body></html>
